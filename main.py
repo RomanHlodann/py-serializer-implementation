@@ -11,9 +11,7 @@ from car.serializers import CarSerializer
 
 def serialize_car_object(car: Car) -> bytes:
     serializer = CarSerializer(car)
-    if serializer.is_valid():
-        return JSONRenderer().render(data=serializer.data)
-    raise ValidationError(serializer.errors)
+    return JSONRenderer().render(data=serializer.data)
 
 
 def deserialize_car_object(json: bytes) -> Car:
